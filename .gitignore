@@ -1,0 +1,14 @@
+# File types #
+##############
+*.pyc
+*.swo
+*.swp
+*.swn
+
+# Directories #
+###############
+logs/
+
+# OS generated files #
+######################
+.DS_Store?
