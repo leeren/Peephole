@@ -4,7 +4,7 @@ mod=Blueprint('home', __name__)
 
 @mod.route('/')
 def index():
-    user = {'name':'fucker'}
+    user = {'name':'Leeren'}
     print 'hey'
     return render_template('index.html', user=user)
 

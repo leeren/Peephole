@@ -29,3 +29,4 @@ app.config.from_pyfile(config_path, silent=True)
 # END OF PROJECT CONFIGURATION
 
 from . import controllers
+from . import forms
