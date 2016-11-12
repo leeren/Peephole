@@ -18,6 +18,7 @@ app.config.from_object('config.DefaultConfig')
 app.config['ENVIRONMENT_STAGE'] = stage
 app.config['ENVIRONMENT_ROOT'] = envroot
 
+print app.config
 # Load stage configurations
 app.config.from_object('config.%sConfig' % stage)
 
