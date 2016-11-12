@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+    // This is called with the results from FB.getLoginStatus().
+    function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object returned with status field that lets all know current login status.
+        if (response.status === 'connected') {
+            //Logged in
+            testAPI();
+        } else if (response.status === 'not_authorized') {
+            // The person is logged into FB but not app
+            document.getElementById('status').innerHTML = 'Please login';
+        } else {
+            // not logged into fb, 
+            document.getElementById('status').innerHTML = 'Please login to fb';
+        }
+    }
+
+    // Called when someone finishes login button.
+    function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response)
+        });
+    }
+
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '211755832600216',
+      cookie     : true, //enable cookie to allow server access session
+      xfbml       : true, //parse social plugins
+      version     : 'v2.8' // use graph api version 2.8
+    });
+    
+    // Intilaized JS SDK, call FB.getLoginStatus. This gets state of person visiting page and returns one of three states. (1, connected) (2, not_authorized) (3, not in fb and maybe not your app
+
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+    });
+
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Run test of GRAPH API after login is successful. See statusChangeCallback
+    function testAPI() {
+        console.log('Welcome! Fetching info...');
+        FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+        });
+    }
+</script>
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status"></div>
+
+<h1> Sign In</h1>
+<form action="" method="post" name="login">
+    {{ form.hidden_tag()  }}
+    <p>
+        Please enter your OpenID:<br>
+        {{ form.openid(size=80) }}<br>
+        <!-- fields with validators have errors under form.field_name.errors -->
+        {% for error in form.openid.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>{{ form.remember_me  }}Remember Me</p>
+    <p><input type="submit" value="Sign In"</p>
+</form>
+{% endblock %}
