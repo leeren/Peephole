@@ -5,7 +5,7 @@ var RadarChart = {
       w: 600,
       h: 600,
       factor: 1,    // 框的縮放比例
-      factorLegend: .85,
+      factorLegend: .7,
       levels: 4,    // 幾層框
       maxValue: 100,
       radians: 2 * Math.PI,
@@ -73,7 +73,7 @@ var RadarChart = {
           .attr("class", "line").style("stroke", "grey").style("stroke-width", "1px");
 
       axis.append("text").attr("class", "legend")
-          .text(function(d){return d}).style("font-family", "sans-serif").style("font-size", "10px").attr("transform", function(d, i){return "translate(0, -10)";})
+          .text(function(d){return d}).style('fill', 'white').style("font-family", "Raleway").style("font-size", "12px").attr("transform", function(d, i){return "translate(-30, 0)";})
           .attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-20*Math.sin(i*cfg.radians/total);})
           .attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))+20*Math.cos(i*cfg.radians/total);});
     }
@@ -155,8 +155,7 @@ var RadarChart = {
     }
 
     //Tooltip
-    tooltip = g.append('text').style('opacity', 0).style('font-family', 'sans-serif').style('font-size', 13).style('fill', '#F2E9E1');
-
+    tooltip = g.append('text').style('opacity', 0).style('font-family', 'Raleway').style('font-size', 13).style('fill', '#F2E9E1');
 
     function move(dobj, i){
       this.parentNode.appendChild(this);

@@ -1,6 +1,6 @@
-//Expanding text area
+console.clear();
+// Adapted from georgepapadakis.me/demo/expanding-textarea.html
 (function(){
-
   
   var textareas = document.querySelectorAll('.expanding'),
       
@@ -48,7 +48,8 @@
     
     textareas = getElementsByClass('expanding');
   }
-  
+
+  console.log(textareas.length);
   for (var i = 0; i < textareas.length; i++ ) {
     attachResize(textareas[i]);
   }
