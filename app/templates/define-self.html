@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/define-self.css') }}">
+</head>
+
+<center><div class="greeting">Hello, Maya</div></center>
+
+<!-- <center><form action="" autocomplete="on">
+  <input id="description" name="description" type="text" placeholder="Describe yourself">
+  </form></center> -->
+  <textarea name="description" id="description" placeholder="Describe yourself" class="expanding" required></textarea>
+
+ {% endblock %}

@@ -1,0 +1,43 @@
+.greeting {
+	font-size: 80px;
+	margin-top: 25px;
+	margin-bottom: 100px;
+}
+#description{
+
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  padding: 0;
+  position: relative;
+} 
+
+textarea {
+  font-size: 20px;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  color: #659CEF;
+  border: none;
+  padding: 3px;
+  padding-right: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  width: 800px;
+  z-index: 1;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+  text-align: left;
+  resize: none;
+}
+
+textarea:focus 
+{outline:0;}
+
+.expanding {
+  vertical-align: top;
+}
