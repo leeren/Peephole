@@ -43,16 +43,15 @@ migrate = Migrate(app, db)
 oauth = OAuth(app)
 
 facebook = oauth.remote_app(
-        'facebook',
-        consumer_key=app.config.get('FACEBOOK_APP_ID'),
-        consumer_secret=app.config.get('FACEBOOK_APP_SECRET'),
-        request_token_params={'scope': 'email'},
+        name='facebook',
         base_url='https://graph.facebook.com',
         request_token_url=None,
         access_token_url='/oauth/access_token',
-        access_token_method='GET',
-        authorize_url='https://www.facebook.com/dialog/oauth'
-        )
+        authorize_url='https://www.facebook.com/dialog/oauth',
+        consumer_key=app.config.get('FACEBOOK_APP_ID'),
+        consumer_secret=app.config.get('FACEBOOK_APP_SECRET'),
+        request_token_params={'scope': 'email'}
+)
 
 from . import controllers
 from . import models

@@ -11,6 +11,7 @@ class User(db.Model, UserMixin):
     about_me = db.Column(db.String)
     name = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True)
+    active = db.Column(db.Boolean())
     comments = db.relationship('Comment', backref='commenter', lazy='dynamic', foreign_keys='Comment.commenter_id')
     received_comments = db.relationship('Comment', backref='received', lazy='dynamic', foreign_keys='Comment.receiver_id')
     rated_stats = db.relationship('Stat', backref='rater', lazy='dynamic', foreign_keys='Stat.rater_id')

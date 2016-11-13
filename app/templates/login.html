@@ -3,65 +3,6 @@
 <head>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/login.css') }}">
 </head>
-<script>
-    // This is called with the results from FB.getLoginStatus().
-    function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
-        // The response object returned with status field that lets all know current login status.
-        if (response.status === 'connected') {
-            //Logged in
-            testAPI();
-        } else if (response.status === 'not_authorized') {
-            // The person is logged into FB but not app
-            document.getElementById('status').innerHTML = 'Please login';
-        } else {
-            // not logged into fb, 
-            document.getElementById('status').innerHTML = 'Please login to fb';
-        }
-    }
-
-    // Called when someone finishes login button.
-    function checkLoginState() {
-        FB.getLoginStatus(function(response) {
-            statusChangeCallback(response)
-        });
-    }
-
-    window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '211755832600216',
-      cookie     : false, //enable cookie to allow server access session
-      xfbml       : true, //parse social plugins
-      version     : 'v2.8' // use graph api version 2.8
-    });
-    
-    // Intilaized JS SDK, call FB.getLoginStatus. This gets state of person visiting page and returns one of three states. (1, connected) (2, not_authorized) (3, not in fb and maybe not your app
-
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
-
-    };
-
-    // Load the SDK asynchronously
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Run test of GRAPH API after login is successful. See statusChangeCallback
-    // function testAPI() {
-    //     console.log('Welcome! Fetching info...');
-    //     FB.api('/me', function(response) {
-    //         console.log('Successful login for: ' + response.name);
-    //         document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
-    //     });
-    // }
-</script>
 <div id="searchbar">
   <form action="" autocomplete="on">
   <input id="search" name="search" type="text" placeholder="Who're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
@@ -87,7 +28,7 @@
             </script></div>
         <div class="title_text">le</div>
     </div><br>
-    <form action="" method="POST"><button type="submit" class="button">LOGIN WITH<img src="http://www.freeiconspng.com/uploads/facebook-f-logo-transparent-facebook-f-22.png" style="width: 50px;"></button></form>
+    <form action=" {{ url_for('.login') }}" method="POST"><button type="submit" class="button">LOGIN WITH<img src="http://www.freeiconspng.com/uploads/facebook-f-logo-transparent-facebook-f-22.png" style="width: 50px;"></button></form>
 <!--     <div class="button">Help</div> -->
  </div>
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, flash, redirect, session, request, url_for, g
-from app import app, lm, facebook
+from app import app, lm, facebook, db
+from app.models import User
 from flask_oauthlib.client import OAuthException
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -19,11 +20,10 @@ def index():
         return render_template('define-self.html')
     return render_template('login.html')
 
-@mod.route('/login')
+@mod.route('/login', methods=['GET', 'POST'])
 def login():
     callback = url_for(
             'authorize_facebook',
-            next=request.args.get('next') or request.referrer or None,
             _external=True
             )
     return facebook.authorize(callback=callback)
@@ -36,32 +36,35 @@ def authorize_facebook():
                 request.args['error_reason'],
                 request.args['error_description']
                 )
-        if isinstance(resp, OAuthException):
-            return 'Acess denied: %s' % resp.message
+    if isinstance(resp, OAuthException):
+        return 'Acess denied: %s' % resp.message
+    session['oauth_token'] = (resp['access_token'], '')
+    fb_user = facebook.get('/me/?fields=email,name,id,picture')
+    return set_user(fb_user)
 
-        session['oauth_token'] = (resp['access_token'], '')
-        user = facebook.get('/me/?fields=email,name,id,picture')
-        return set_user(user)
-
-def set_user(user):
-    user = User.query.filter_by(facebook_id = user.data['id']).first()
+def set_user(fb_user):
+    user = User.query.filter_by(facebook_id = fb_user.data['id']).first()
     if user is None:
-        create_user(user)
+        create_user(fb_user)
         return render_template('define-self.html')
     login_user(user, remember=True)
     return render_template('define-self.html')
     
-def create_user(user):
+def create_user(fb_user):
     new_user = User(
-        facebook_id = user.data['id'],
-        pic = user.data['picture']['data']['url'],
-        name = user.data['name'],
-        email = user.data['email']
+        facebook_id = fb_user.data['id'],
+        pic_url = fb_user.data['picture']['data']['url'],
+        name = fb_user.data['name'],
+        email = fb_user.data['email']
     )
     db.session.add(new_user)
     db.session.commit()
     login_user(new_user, remember=True)
     return new_user
+
+@facebook.tokengetter
+def get_facebook_oauth_token():
+    return session.get('oauth_token')
 
 @mod.errorhandler(403)
 def page_not_found(e):
