@@ -12,8 +12,8 @@ class DefaultConfig(object):
     APPLICATION_COPYRIGHT = '%s - Leeren Chang' % date.today().year
     SECRET_KEY = 'kx02j4lksaF'
 
-    SOCIAL_FACEBOOK = {'consumer_key': '211755832600216',
-                       'consumer_secret': '179af417990a308468246f52decbff38'}
+    FACEBOOK_APP_ID = '211755832600216',
+    FACEBOOK_APP_SECRET =  '179af417990a308468246f52decbff38'
 
 class DevConfig(object):
 
