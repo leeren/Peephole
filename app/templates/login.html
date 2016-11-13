@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/login.css') }}">
+</head>
 <script>
     // This is called with the results from FB.getLoginStatus().
     function statusChangeCallback(response) {
@@ -51,16 +54,42 @@
     }(document, 'script', 'facebook-jssdk'));
 
     // Run test of GRAPH API after login is successful. See statusChangeCallback
-    function testAPI() {
-        console.log('Welcome! Fetching info...');
-        FB.api('/me', function(response) {
-            console.log('Successful login for: ' + response.name);
-            document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
-        });
-    }
+    // function testAPI() {
+    //     console.log('Welcome! Fetching info...');
+    //     FB.api('/me', function(response) {
+    //         console.log('Successful login for: ' + response.name);
+    //         document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
+    //     });
+    // }
 </script>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<div id="searchbar">
+  <form action="" autocomplete="on">
+  <input id="search" name="search" type="text" placeholder="Who're we looking for ?"><input id="search_submit" value="Rechercher" type="submit">
+  </form>
+</div>
+<div id="splash-content">
+    <div class="title">Peeph</div>
+        <div id="chart"><script>
+        var mycfg = {
+        w: 300,
+        h: 300,
+        }
+
+        var d = [
+         {value: 75, order:0}, 
+         {value: 75, order:1}, 
+         {value: 75, order:2},  
+         {value: 75, order:3},  
+         {value: 75, order:4}
+        ];
+        RadarChart.draw("#chart", d, mycfg);
+        </script></div>
+    <div class="title">le</div><br>
+</div>
+
+<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button> -->
+
 
 <div id="status"></div>
 {% endblock %}

@@ -1,0 +1,85 @@
+#splash-content {
+	height: 100vh;
+	display: flex;
+    align-items: center; 
+}
+
+.title {
+/*  display: inline-block;
+  position: relative;*/
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 200px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+
+/*body {
+	background: #DDD;
+	font-size: 15px;
+}*/
+#searchbar {
+/*  margin: 50px 100px;*/
+  margin: 35px 35px;
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  float: right;
+  padding: 0;
+  position: relative;
+}
+
+input[type="text"] {
+  height: 50px;
+  font-size: 20px;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  border: none;
+  outline: none;
+  color: #659CEF;
+  padding: 3px;
+  padding-right: 60px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  z-index: 3;
+  transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+  cursor: pointer;
+}
+
+input[type="text"]:focus:hover {
+  border-bottom: 1px solid #BBB;
+}
+
+input[type="text"]:focus {
+  width: 400px;
+  z-index: 1;
+  border-bottom: 1px solid #BBB;
+  cursor: text;
+}
+input[type="submit"] {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  color:red;
+  float: right;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAD20lEQVRoQ+2ZXU7bQBCAZ5xmo0rECQ/FVGpJOEHDCaAnKJyg6QkIJwBOQDgB4QSEEzScgPQEJKVSMTyQOEgVpvFU69jB5M+760R1IvbVu7Pz7c7MzowRFmTggnDAKwi/Sbq/ynYeE5uAtA1EeULIImDB/QZUR4IWIDaAsJpOdS9web01KwtQupGH218Fh/7uA+C2nGJU1fDN4dLKh7rcuvDZUiB/7n/nn2x7HwCKfdFEFwRY1RJaHQlbvpIclpCyTtcpIFIRAD8F1KkkGTt8u/y+Ea6i2AxhEMv8uU3gnCBgloDaAFjWmVMWNRduhpatlQCohIAZAmppWmIn/e5jTUzVybOEQNo3zV1EKHuizpOMlVRP07tVLuuL60sEpcxq7jgqTChI+6ZZQoQjb9O9zGrOB4q097TlTgTh5gRAZ67GiN/0lbVKJO0HFlu3P4tAdOKK17TPUcxsLAg3Adt+vHR9gmBqNzF4EP7NcJ9hLLWharJjQSyzyU//KwCc60ZOMszK3ZtlNquez5zqRu45IkqIGQnSeye6lzw6MZYqqJ6SqB5eALji8zVMbKi8MyNB/BMigMOMkTsQVSjKvLbZPEAA/kYpWcAQiJt22No9VyrNnGXRdyIKRD/d8fbVjVxoNB3cb2hBP1IRXeir+a2oCsqst8xGvZcB4I5urHG/ER4jQHpOPstINU67wNsi7fTDIDeNGiBuRo3rwkcZmNi5u94ix/kOCtYwBNI2G/ztKKhGDxUAf00gWtYzRn5DRtYo0yIuQMXhZDYeN9cym0r7LzJIL3L8T9MCoB+6kXcrTdGxuM7u51jzH3691J03D2Qjh6gZjH1HvIg5lQcxDimKSmoUx6RR+lXnNxyWxkcqdkRNLZjGJxlbVykbBAorqupGfkdUKZV5ltk4c3tkCqmJv19YqVt3WzezLHW9OoQXcTqjvGrZMDHv7ydxrhHOtvmgEqmCtx9awAy0babSg+IKdMzmPgE8V58RDyoUhG8ahAGgapKl9lQcksvqOfbj0ci+cQQYIRD3BO+utxynW+23OwHLS8w5FrVp/j492NqufwvcJ7isoeCgCCMM8nyaNjcH3iZyB88AgLDiNbHbA03sDG9iA1LR/93gLTtPM6fYeUrwSOU26F4MBRgpEH8zrwDiQG7/VmKcoqZVgh3FYLcxCowSSHBDr1nh/ugBhKz/+4CImgjQQMA6IdbSrFsbZ4bTgIkMInEbE6dGhYkNCKeMAhMrkCgwsQNRhYkliApMbEFkYWINIgMTe5AJMC8qybkAGQEzVA7PDUgAZmvU77m5ApmUGryCTCvHmpacf5DaX1FGraX+AAAAAElFTkSuQmCC) center center no-repeat;
+  text-indent: -10000px;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  cursor: pointer;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity .4s ease;
+}
+
+input[type="submit"]:hover{
+  opacity: 1;
+}
