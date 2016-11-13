@@ -13,4 +13,7 @@
 1. `pip freeze > requirements.txt`
 
 ## DB Migrations
+1. After making schema changes, run `flask db migrate` to create migration
+2. Inspect migration file (migrations/versions/...) and run `flask db upgrade`
+REMEMBER: Always run `flask db upgrade` after pulling someone's migration changes
 
