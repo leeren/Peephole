@@ -89,6 +89,7 @@ input[type="text"]:focus {
   z-index: 1;
   border-bottom: 1px solid #BBB;
   cursor: text;
+  outline:0;
 }
 input[type="submit"] {
   height: 50px;
@@ -112,3 +113,6 @@ input[type="submit"] {
 input[type="submit"]:hover{
   opacity: 1;
 }
+
+input:focus 
+{outline:0;}

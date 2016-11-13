@@ -10,6 +10,10 @@ def index():
         flash('Login requested for OpenID="%s", remember_me=%s' % (form.openid.data, str(form.remember_me.data)))
     return render_template('login.html', form=form)
 
+@mod.route('/define-self', methods=['GET'])
+def define_self():
+	return render_template('define-self.html')
+
 @mod.errorhandler(403)
 def page_not_found(e):
     return render_template('error.html', message="Restricted access", error=e)
