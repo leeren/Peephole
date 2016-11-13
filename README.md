@@ -9,4 +9,8 @@
 ## Install python dependencies
 1. `pip install -r requirements.txt`
 
-## Setup alembic
+## Add python dependencies
+1. `pip freeze > requirements.txt`
+
+## DB Migrations
+
