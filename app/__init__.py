@@ -22,7 +22,6 @@ app.config['ENVIRONMENT_ROOT'] = envroot
 # Load DB configurations
 app.config['MIGRATION_DIR'] = os.path.join(envroot, 'migrations/')
 app.config['DB_URI'] = 'sqlite:///' + os.path.join(envroot, 'app.db')
-print app.config['DB_URI']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 # Load stage configurations
