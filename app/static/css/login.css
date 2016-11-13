@@ -1,16 +1,45 @@
 #splash-content {
-	height: 100vh;
-	display: flex;
-    align-items: center; 
+  display: flex;           /* establish flex container */
+  flex-direction: column;  /* make main axis vertical */
+  justify-content: center; /* center items vertically, in this case */
+  align-items: center;     /* center items horizontally, in this case */
+  height: 100vh;
 }
 
 .title {
-/*  display: inline-block;
-  position: relative;*/
-	margin-left: auto;
-	margin-right: auto;
+/*  display: inline-block;*/
+  display: flex;
+}
+
+.title_text {
+  display: inline-block;
 	font-size: 200px;
 }
+
+.button {
+  width: 225px;
+  height: 80px;
+  border-color: #3b5998;
+  border-style: solid;
+  text-align: center;
+  color: #3b5998;
+  background-color:#1e1e1e;
+  font-weight: 400;
+  font-size: 15px;
+  font-family: 'Arial', 'sans-serif';
+  transition: background-color .4s ease;
+  letter-spacing: .1em;
+}
+
+.button:hover {
+  background-color: white;
+}
+
+#chart {
+  display: inline-block;
+  bottom: 0;
+}
+
 
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
@@ -31,7 +60,7 @@
 }
 
 input[type="text"] {
-  height: 50px;
+  height: 60px;
   font-size: 20px;
   display: inline-block;
   font-family: 'Raleway', sans-serif;
