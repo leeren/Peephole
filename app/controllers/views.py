@@ -29,8 +29,8 @@ def login():
     return facebook.authorize(callback=callback)
 
 @mod.route('/define-self')
-def define_self():
-    return render_template('define-self.html')
+def define_self(user):
+    return render_template('define-self.html', user=user)
 
 @app.route('/login/authorize')
 def authorize_facebook():
@@ -49,8 +49,8 @@ def authorize_facebook():
 def set_user(fb_user):
     user = User.query.filter_by(facebook_id = fb_user.data['id']).first()
     if user is None:
-        create_user(fb_user)
-        return define_self()
+        user = create_user(fb_user)
+        return define_self(user)
     login_user(user, remember=True)
     return render_template('profile.html')
     
